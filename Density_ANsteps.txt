@@ -1,6 +1,9 @@
 #### *** Sostpro 2018 Surbers- Invertebrate density per site *** ###
 ### A.Nicolas-July 22, 2020.
 
+# I created the R script below to produce a .csv output file for each region, which were then combined in an Excel file for John.
+
+
 library(dplyr)
 
 ####################        Interior      #######################################
