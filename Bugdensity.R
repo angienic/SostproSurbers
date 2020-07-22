@@ -29,7 +29,11 @@ Taxasums_Interior<-Bugs_Interior%>%
   Taxasums_Interior<-data.frame(read.csv("C:\\Users\\nicangie\\Documents\\Ang\\Projects_and_Samples\\SOSTPRO\\Surbers\\output_data/Taxasums_Interior.csv"))
   Taxasums_Interior$Site_surbers<-as.numeric(Surber_n_Interior$n)
   Taxasums_Interior$Area.m2<-as.numeric((Taxasums_Interior$Site_surbers)*0.09) #Surber size 30*30cm=0.09m2
-  Density_Interior<-data.frame((Taxasums_Interior[,-1])/Taxasums_Interior$Area.m2)# Express #indiv/area
+  Density_Interior<-data.frame((Taxasums_Interior[,-c(1,137,138)])/Taxasums_Interior$Area.m2)#Exclude non-numeric ve just numeric columns. Express #indiv/area
+  Density_Interior$Site<-Taxasums_Interior$Site #returning Site column
+  Density_Interior$Site_surbers<-Taxasums_Interior$Site_surbers
+  Density_Interior$Area.m2<-Taxasums_Interior$Area.m2
+  
   write.csv(Density_Interior, file="output_data/Density_Interior.csv",row.names=FALSE)  
 
 #####################################################
@@ -55,7 +59,10 @@ write.csv(Taxasums_Coast, file="output_data/Taxasums_Coast.csv",row.names=FALSE)
 Taxasums_Coast<-data.frame(read.csv("C:\\Users\\nicangie\\Documents\\Ang\\Projects_and_Samples\\SOSTPRO\\Surbers\\output_data/Taxasums_Coast.csv"))
 Taxasums_Coast$Site_surbers<-as.numeric(Surber_n_Coast$n)
 Taxasums_Coast$Area.m2<-as.numeric((Taxasums_Coast$Site_surbers)*0.09) #Surber size 30*30cm=0.09m2
-Density_Coast<-data.frame((Taxasums_Coast[,-1])/Taxasums_Coast$Area.m2)# Express #indiv/area
+Density_Coast<-data.frame((Taxasums_Coast[,-c(1,109,110)])/Taxasums_Coast$Area.m2)# Express #indiv/area
+Density_Coast$Site<-Taxasums_Coast$Site
+Density_Coast$Site_surbers<-Taxasums_Coast$Site_surbers
+Density_Coast$Area.m2<-Taxasums_Coast$Area.m2
 write.csv(Density_Coast, file="output_data/Density_Coast.csv",row.names=FALSE)   
   
 #####################################################  
