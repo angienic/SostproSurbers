@@ -40,7 +40,7 @@ Taxasums_Interior<-Bugs_Interior%>%
 
 ####################            Coast      #########################################
 
-Bugs_Coast<-read.csv ("C:\\Users\\nicangie\\Documents\\Ang\\Projects_and_Samples\\SOSTPRO\\Surbers\\CleanBugsforRdensity_Coast.csv")
+Bugs_Coast<-read.csv ("C:\\Users\\nicangie\\Documents\\Ang\\Projects_and_Samples\\SOSTPRO\\Surbers\\CoastalSampling_BC2018_bugs.csv")
 names(Bugs_Coast)[names(Bugs_Coast)=="Code"] <- "Site"
 
 #### Counting surbers processed per site
@@ -59,7 +59,7 @@ write.csv(Taxasums_Coast, file="output_data/Taxasums_Coast.csv",row.names=FALSE)
 Taxasums_Coast<-data.frame(read.csv("C:\\Users\\nicangie\\Documents\\Ang\\Projects_and_Samples\\SOSTPRO\\Surbers\\output_data/Taxasums_Coast.csv"))
 Taxasums_Coast$Site_surbers<-as.numeric(Surber_n_Coast$n)
 Taxasums_Coast$Area.m2<-as.numeric((Taxasums_Coast$Site_surbers)*0.09) #Surber size 30*30cm=0.09m2
-Density_Coast<-data.frame((Taxasums_Coast[,-c(1,109,110)])/Taxasums_Coast$Area.m2)# Express #indiv/area
+Density_Coast<-data.frame((Taxasums_Coast[,-c(1,80,81)])/Taxasums_Coast$Area.m2)# Express #indiv/area
 Density_Coast$Site<-Taxasums_Coast$Site
 Density_Coast$Site_surbers<-Taxasums_Coast$Site_surbers
 Density_Coast$Area.m2<-Taxasums_Coast$Area.m2
@@ -70,5 +70,7 @@ write.csv(Density_Coast, file="output_data/Density_Coast.csv",row.names=FALSE)
 #End of John's requirement: "density per taxa per stream".
 #Optional to explore if there's time later: summarize densities by treatment type,round up values, sort by most dense, group by family or by order
   
-# 
+# July 29 Update
+#The file originally used for thr Coast ("CleanBugsforRdensity_Coast.csv") was wrong.The sites inside were actually interior. I have updated this using correct file now.
+
  
